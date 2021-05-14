@@ -1,5 +1,6 @@
 import AppConfig from "../AppConfig";
 
+const rootDir = __dirname;
 export default {
   name: "default",
   type: "postgres",
@@ -10,12 +11,7 @@ export default {
   database: AppConfig.DB_NAME || "test",
   synchronize: AppConfig.DB_SNCY,
   logging: AppConfig.POSTGRES_LOGIN === "true",
-  entities: ["${rootDir}/entities/**/*.ts"],
-  migrations: ["${rootDir}/migration/**/*.ts"],
-  subscribers: ["${rootDir}/subscriber/**/*.ts"],
-  cli: {
-    entitiesDir: "${rootDir}/entity",
-    migrationsDir: "${rootDir}/migration",
-    subscribersDir: "${rootDir}/subscriber"
-  }
+  entities: [`${rootDir}/../../entities/**/*{.ts,.js}`],
+  migrations: [`${rootDir}/../../migration/**/*{.ts,.js}`],
+  subscribers: [`${rootDir}/../../subscriber/**/*{.ts,.js}`],
 };
